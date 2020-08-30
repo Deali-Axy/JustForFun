@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 
 namespace NeteaseMusicShuffle {
     /// <summary>
@@ -31,16 +34,24 @@ namespace NeteaseMusicShuffle {
                 }
             }
 
-            Console.WriteLine(PlayList.Count);
+            var jsonData = JsonSerializer.Serialize(PlayList.Keys.ToList(),
+                new JsonSerializerOptions {
+                    // 避免中文被编码
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+                    WriteIndented = true
+                });
+
+            File.WriteAllText("music.json", jsonData);
+
 
             // 开始播放
-            for (var turn = 0; turn < 100; turn++) {
-                Console.WriteLine($"开始播放，第{turn}轮");
-                Console.WriteLine("============================");
-                Console.WriteLine(Shuffle(PlayList).Dump());
-                // Console.WriteLine("\n");
-                Console.Read();
-            }
+            // for (var turn = 0; turn < 100; turn++) {
+            //     Console.WriteLine($"开始播放，第{turn}轮");
+            //     Console.WriteLine("============================");
+            //     Console.WriteLine(Shuffle(PlayList).Dump());
+            //     // Console.WriteLine("\n");
+            //     Console.Read();
+            // }
         }
 
         private static IEnumerable<KeyValuePair<string, int>> Shuffle(Dictionary<string, int> musics,
