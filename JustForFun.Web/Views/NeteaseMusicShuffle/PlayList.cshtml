@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["title"] = "当前播放列表";
+}
+
+@section SideNav {
+    <partial name="_SideNav"/>
+}
+
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>当前播放列表</legend>
+</fieldset>
+
+<div class="layui-row">
+    <div class="layui-col-xs4">
+        <table class="layui-hide" id="musicList"></table>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/js/NeteaseMusicShuffle/playList.js"></script>
+}

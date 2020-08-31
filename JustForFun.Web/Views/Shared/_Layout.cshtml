@@ -1,0 +1,97 @@
+﻿@using JustForFun.Web.ToolKits
+@{
+}
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>JustForFun算法可视化平台 - @ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/layui/css/layui.css">
+</head>
+
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">JustForFun算法可视化平台</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item @RazorHelper.MenuHighlight(ViewContext, "Home")">
+                <a asp-controller="Home" asp-action="Index">首页</a>
+            </li>
+            <li class="layui-nav-item @RazorHelper.MenuHighlight(ViewContext, "NeteaseMusicShuffle")">
+                <a asp-controller="NeteaseMusicShuffle" asp-action="Index">网易云随机算法改进</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它</a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="#" onclick="msgBox('暂未开启')">邮件管理</a>
+                    </dd>
+                    <dd>
+                        <a href="#" onclick="msgBox('暂未开启')">消息管理</a>
+                    </dd>
+                    <dd>
+                        <a href="#" onclick="msgBox('暂未开启')">授权管理</a>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <i class="layui-icon layui-icon-friends"></i>
+                    管理员
+                </a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="#" onclick="msgBox('暂未开启')">基本资料</a>
+                    </dd>
+                    <dd>
+                        <a href="#" onclick="msgBox('暂未开启')">安全设置</a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="">退出</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+    @RenderSection("SideNav", required: false)
+
+    <div class="layui-body" style="bottom: 0;">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px 15px 0 15px;">
+            @RenderBody()
+        </div>
+    </div>
+
+    @* <div class="layui-footer"> *@
+    @*     <!-- 底部固定区域 --> *@
+    @*     © OneCat 技术支持 *@
+    @* </div> *@
+</div>
+
+<!-- 引入LayUI -->
+<script src="~/lib/layui/layui.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function () {
+        let element = layui.element;
+    });
+</script>
+
+<!-- 引入全局js文件 -->
+<script src="~/js/site.js"></script>
+
+<!-- 引入jQuery -->
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

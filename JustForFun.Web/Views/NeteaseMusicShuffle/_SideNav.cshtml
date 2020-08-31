@@ -1,0 +1,14 @@
+﻿@using JustForFun.Web.ToolKits
+
+<div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+        <ul class="layui-nav layui-nav-tree" lay-filter="test">
+            <li class="layui-nav-item @RazorHelper.SideNavHighlight(ViewContext, "Index")">
+                <a asp-controller="NeteaseMusicShuffle" asp-action="Index">总览</a>
+            </li>
+            <li class="layui-nav-item @RazorHelper.SideNavHighlight(ViewContext,"PlayList")">
+                <a asp-controller="NeteaseMusicShuffle" asp-action="PlayList">播放列表</a>
+            </li>
+        </ul>
+    </div>
+</div>

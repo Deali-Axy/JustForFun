@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["title"] = "网易云随机播放算法优化";
+}
+
+@section SideNav {
+    <partial name="_SideNav"/>
+}
+
+
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>歌曲列表</legend>
+</fieldset>
+
+<table class="layui-hide" id="musicList"></table>
+
+
+@section Scripts {
+    <script src="~/js/NeteaseMusicShuffle/index.js"></script>
+}

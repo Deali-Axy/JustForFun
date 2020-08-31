@@ -11,7 +11,7 @@ namespace NeteaseMusicShuffle {
     /// <summary>
     /// 网易云音乐随机播放算法优化
     /// </summary>
-    static class Program {
+    public static class Program {
         // 选取的音乐输了
         private const int MusicCount = 100;
 
@@ -20,6 +20,8 @@ namespace NeteaseMusicShuffle {
 
         // 记录歌曲名和播放次数
         private static readonly Dictionary<string, int> PlayList = new Dictionary<string, int>();
+
+        public static int CurrentTurn { get; set; }
 
         static void Main(string[] args) {
             var musicPath = @"E:\Music\Like";
@@ -33,7 +35,26 @@ namespace NeteaseMusicShuffle {
                     }
                 }
             }
+        }
 
+        /// <summary>
+        /// 开始下一轮播放
+        /// </summary>
+        public static List<KeyValuePair<string, int>> NextTurn() {
+            Console.WriteLine($"开始播放，第{CurrentTurn}轮");
+            Console.WriteLine("============================");
+            var currentPlayData = Shuffle(PlayList).ToList();
+            Console.WriteLine(currentPlayData.Dump());
+
+            CurrentTurn++;
+
+            return currentPlayData;
+        }
+
+        /// <summary>
+        /// 将歌曲数据输出到Json文件
+        /// </summary>
+        private static void OutputToJsonFile() {
             var jsonData = JsonSerializer.Serialize(PlayList.Keys.ToList(),
                 new JsonSerializerOptions {
                     // 避免中文被编码
@@ -42,16 +63,6 @@ namespace NeteaseMusicShuffle {
                 });
 
             File.WriteAllText("music.json", jsonData);
-
-
-            // 开始播放
-            // for (var turn = 0; turn < 100; turn++) {
-            //     Console.WriteLine($"开始播放，第{turn}轮");
-            //     Console.WriteLine("============================");
-            //     Console.WriteLine(Shuffle(PlayList).Dump());
-            //     // Console.WriteLine("\n");
-            //     Console.Read();
-            // }
         }
 
         private static IEnumerable<KeyValuePair<string, int>> Shuffle(Dictionary<string, int> musics,
