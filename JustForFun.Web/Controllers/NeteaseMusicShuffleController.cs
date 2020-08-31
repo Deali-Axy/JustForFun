@@ -39,5 +39,17 @@ namespace JustForFun.Web.Controllers {
                 },
             }.ToObjectResult();
         }
+
+        public ObjectResult CurrentPlay() {
+            var playList = NeteaseMusicShuffle.Program.PlayList;
+
+            return new Response<object> {
+                Code = 0,
+                Data = playList.Select((item) => new {
+                    Title = item.Key,
+                    PlayedTimes = item.Value
+                }).ToList()
+            }.ToObjectResult();
+        }
     }
 }

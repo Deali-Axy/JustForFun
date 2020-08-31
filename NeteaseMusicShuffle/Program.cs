@@ -19,12 +19,20 @@ namespace NeteaseMusicShuffle {
         private const int EveryTurnMusicCount = 10;
 
         // 记录歌曲名和播放次数
-        private static readonly Dictionary<string, int> PlayList = new Dictionary<string, int>();
+        public static readonly Dictionary<string, int> PlayList;
 
         public static int CurrentTurn { get; set; }
 
+        static Program() {
+            PlayList = NeteaseMusicShuffleData.Data.ToDictionary(
+                key => key, key => 0
+            );
+        }
+
         static void Main(string[] args) {
             var musicPath = @"E:\Music\Like";
+
+            PlayList.Clear();
 
             foreach (var filePath in Directory.GetFiles(musicPath)) {
                 if (filePath.EndsWith("mp3")) {
@@ -34,6 +42,11 @@ namespace NeteaseMusicShuffle {
                         PlayList.Add(musicName, 0);
                     }
                 }
+            }
+
+            Console.WriteLine(PlayList.Count);
+            for (int i = 0; i < 10; i++) {
+                Console.WriteLine(NextTurn().Dump());
             }
         }
 
