@@ -6,8 +6,12 @@
             <li class="layui-nav-item @RazorHelper.SideNavHighlight(ViewContext, "Index")">
                 <a asp-controller="NeteaseMusicShuffle" asp-action="Index">总览</a>
             </li>
-            <li class="layui-nav-item @RazorHelper.SideNavHighlight(ViewContext,"PlayList")">
-                <a asp-controller="NeteaseMusicShuffle" asp-action="PlayList">播放列表</a>
+            <li class="layui-nav-item @RazorHelper.SideNavHighlight(ViewContext, "TraditionalAlgorithm")">
+                <a asp-controller="NeteaseMusicShuffle" asp-action="TraditionalAlgorithm">常规算法</a>
+            </li>
+
+            <li class="layui-nav-item @RazorHelper.SideNavHighlight(ViewContext, "ImproveAlgorithm")">
+                <a asp-controller="NeteaseMusicShuffle" asp-action="ImproveAlgorithm">改进算法</a>
             </li>
         </ul>
     </div>

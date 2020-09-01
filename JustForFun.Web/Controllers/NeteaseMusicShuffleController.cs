@@ -21,27 +21,58 @@ namespace JustForFun.Web.Controllers {
             }.ToObjectResult();
         }
 
-        public IActionResult PlayList() {
+        public IActionResult TraditionalAlgorithm() {
             return View();
         }
 
-        public ObjectResult NextTurn() {
-            var data = NeteaseMusicShuffle.Program.NextTurn();
+        public IActionResult ImproveAlgorithm() {
+            return View();
+        }
+
+        public ObjectResult TraditionalNextTurn() {
+            var data = NeteaseMusicShuffle.Program.TraditionalAlgorithm.NextTurn();
 
             return new Response<object> {
                 Code = 0,
                 Data = new {
-                    NeteaseMusicShuffle.Program.CurrentTurn,
+                    NeteaseMusicShuffle.Program.TraditionalAlgorithm.CurrentTurn,
                     List = data.Select((item) => new {
                         Title = item.Key,
                         PlayedTimes = item.Value
                     }).ToList()
-                },
+                }
             }.ToObjectResult();
         }
 
-        public ObjectResult CurrentPlay() {
-            var playList = NeteaseMusicShuffle.Program.PlayList;
+        public ObjectResult TraditionalCurrentPlay() {
+            var playList = NeteaseMusicShuffle.Program.TraditionalAlgorithm.PlayList;
+
+            return new Response<object> {
+                Code = 0,
+                Data = playList.Select((item) => new {
+                    Title = item.Key,
+                    PlayedTimes = item.Value
+                }).ToList()
+            }.ToObjectResult();
+        }
+
+        public ObjectResult ImproveNextTurn() {
+            var data = NeteaseMusicShuffle.Program.ImproveAlgorithm.NextTurn();
+
+            return new Response<object> {
+                Code = 0,
+                Data = new {
+                    NeteaseMusicShuffle.Program.ImproveAlgorithm.CurrentTurn,
+                    List = data.Select((item) => new {
+                        Title = item.Key,
+                        PlayedTimes = item.Value
+                    }).ToList()
+                }
+            }.ToObjectResult();
+        }
+
+        public ObjectResult ImproveCurrentPlay() {
+            var playList = NeteaseMusicShuffle.Program.ImproveAlgorithm.PlayList;
 
             return new Response<object> {
                 Code = 0,
