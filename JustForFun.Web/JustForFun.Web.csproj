@@ -857,11 +857,19 @@
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </Content>
-      <Content Update="Views\NeteaseMusicShuffle\ImproveAlgorithm.cshtml">
+      <Content Update="Views\NeteaseMusicShuffle\MoreFirstAlgorithm.cshtml">
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </Content>
-      <Content Update="wwwroot\js\NeteaseMusicShuffle\improveAlgorithm.js">
+      <Content Update="wwwroot\js\NeteaseMusicShuffle\moreFirstAlgorithm.js">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="Views\NeteaseMusicShuffle\LessFirstAlgorithm.cshtml">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="wwwroot\js\NeteaseMusicShuffle\lessFirstAlgorithm.js">
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </Content>

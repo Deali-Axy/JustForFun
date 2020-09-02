@@ -24,7 +24,7 @@ layui.use('table', function () {
         id: 'currentPlay',
         loading: false,
         elem: '#currentPlay',
-        url: '/NeteaseMusicShuffle/ImproveCurrentPlay',
+        url: '/NeteaseMusicShuffle/MoreFirstCurrentPlay',
         cellMinWidth: 80, //全局定义常规单元格的最小宽度，layui 2.2.1 新增
         cols: [[
             {field: 'title', title: '歌曲名称'},
@@ -36,7 +36,7 @@ layui.use('table', function () {
 
 $('#next-turn').on('click', function (e) {
     layui.use('layer', function () {
-        $.get('/NeteaseMusicShuffle/ImproveNextTurn', function (resJson) {
+        $.get('/NeteaseMusicShuffle/MoreFirstNextTurn', function (resJson) {
             console.log(resJson.data)
 
             currentTurnTable.reload('currentTurn', {
@@ -96,7 +96,7 @@ function updateChart(titleList, playedTimesList) {
 function chartReload() {
     // chart.showLoading()
 
-    $.get('/NeteaseMusicShuffle/ImproveCurrentPlay', function (resJson) {
+    $.get('/NeteaseMusicShuffle/MoreFirstCurrentPlay', function (resJson) {
         // chart.hideLoading()
 
         updateChart(
@@ -108,3 +108,9 @@ function chartReload() {
 
 
 chartReload()
+
+$.get('/NeteaseMusicShuffle/MoreFirstCurrentTurn', function (resJson) {
+    console.log(resJson.data)
+    $('#current-turn').text(resJson.data.currentTurn)
+    $('#total-play').text(resJson.data.currentTurn * resJson.data.everyTurnMusicCount)
+})

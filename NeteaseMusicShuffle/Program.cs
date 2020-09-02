@@ -22,9 +22,12 @@ namespace NeteaseMusicShuffle {
         // 传统算法
         public static TraditionalAlgorithm TraditionalAlgorithm;
 
-        // 改进算法
-        public static ImproveAlgorithm ImproveAlgorithm;
-        
+        // 播放次数多的优先算法
+        public static MoreFirstAlgorithm MoreFirstAlgorithm;
+
+        // 次数少优先算法
+        public static LessFirstAlgorithm LessFirstAlgorithm;
+
 
         static Program() {
             PlayList = NeteaseMusicShuffleData.Data.ToDictionary(
@@ -33,7 +36,9 @@ namespace NeteaseMusicShuffle {
 
             TraditionalAlgorithm = new TraditionalAlgorithm();
 
-            ImproveAlgorithm = new ImproveAlgorithm();
+            MoreFirstAlgorithm = new MoreFirstAlgorithm();
+
+            LessFirstAlgorithm = new LessFirstAlgorithm();
         }
 
 

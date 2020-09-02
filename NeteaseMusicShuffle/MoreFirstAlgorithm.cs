@@ -4,10 +4,13 @@ using System.Linq;
 using JustForFun.Toolkit.Extension;
 
 namespace NeteaseMusicShuffle {
-    public class ImproveAlgorithm : BaseAlgorithm {
+    /// <summary>
+    /// 播放次数多的优先算法
+    /// </summary>
+    public class MoreFirstAlgorithm : BaseAlgorithm {
         protected override IEnumerable<KeyValuePair<string, int>> Shuffle(
             IDictionary<string, int> musics,
-            int turnMusicCount = EveryTurnMusicCount
+            int turnMusicCount = DefaultEveryTurnMusicCount
         ) {
             var musicList = new List<string>();
 

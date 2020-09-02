@@ -10,8 +10,11 @@
                 <a asp-controller="NeteaseMusicShuffle" asp-action="TraditionalAlgorithm">常规算法</a>
             </li>
 
-            <li class="layui-nav-item @RazorHelper.SideNavHighlight(ViewContext, "ImproveAlgorithm")">
-                <a asp-controller="NeteaseMusicShuffle" asp-action="ImproveAlgorithm">改进算法</a>
+            <li class="layui-nav-item @RazorHelper.SideNavHighlight(ViewContext, "MoreFirstAlgorithm")">
+                <a asp-controller="NeteaseMusicShuffle" asp-action="MoreFirstAlgorithm">多次优先算法</a>
+            </li>
+            <li class="layui-nav-item @RazorHelper.SideNavHighlight(ViewContext, "LessFirstAlgorithm")">
+                <a asp-controller="NeteaseMusicShuffle" asp-action="LessFirstAlgorithm">少次优先算法</a>
             </li>
         </ul>
     </div>
