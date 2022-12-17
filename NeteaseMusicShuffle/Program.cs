@@ -13,7 +13,7 @@ namespace NeteaseMusicShuffle {
     /// 网易云音乐随机播放算法优化
     /// </summary>
     public static class Program {
-        // 选取的音乐输了
+        // 选取的音乐数量
         private const int MusicCount = 100;
 
         // 记录歌曲名和播放次数
